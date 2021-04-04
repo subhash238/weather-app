@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+    <style>
+        #display{
+            width: 70%;
+            height: 100vh;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+
+        <a href="./main.html"><img src="https://dc-cdn.s3-ap-southeast-1.amazonaws.com/dc-Cover-fs4sr9k8ee9svbfvd08e312d13-20160726133603.Medi.jpeg" alt="logo" id="logo"></a>
+        <div class="search-input">
+            <input type="text" placeholder="Search-Product" id="search-box">
+            <button class="search_btn"><img src="https://cdn.icon-icons.com/icons2/2551/PNG/512/search_icon_152764.png" alt=""></button>
+        </div>
+        <div id="brand-div">
+            <a href="./cart.html">Carts</a>
+        </div>
+         <div id="para">
+            <a href="./products.html" id="user"> Products <i class="down"></i></a>
+        </div> 
+        <div id="login">
+            <a href="./login.html" id="user"> Log In / Sign Up <i class="down"></i></a>
+        </div>
+    </div>
+    <select id="select" onchange="change()">
+        <option name="shopall" id="shopall">selectall</option>  
+        <option name="low" value="low">low to high</option>
+        <option name="high" value="high">high to low</option>
+        <option name="ass" value="ass">assend name</option>
+        <option name="des" value="des">dessend name</option>
+      </select>
+        <div id="display"></div>
+        <script>
+            fetch('https://fakestoreapi.com/products')
+            .then(res=>{
+                return res.json()
+            })
+            .then(res=>{
+                var data=res
+                var div=document.getElementById("display")
+                data.forEach(element => {
+                    var box1=document.createElement("div")
+                    box1.style.float="left"
+                    box1.style.marginLeft="10px"
+                    var img1=document.createElement('img')
+                    img1.setAttribute('src',element.image)
+                    var p=document.createElement('p')
+                    img1.style.width="100px"
+                    img1.style.height="100px"
+                    p.innerHTML=`CATEGORY: ${element.category}<br> PRICE: ${Math.floor(element.price)}<br>`
+                    box1.append(p,img1)
+                    div.append(box1)
+                });
+            })
+            
+        </script>
+</body>
+</html>

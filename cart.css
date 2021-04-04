@@ -1,0 +1,11 @@
+#display{
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
+}
+#promo{
+    width: 50%;
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+}
